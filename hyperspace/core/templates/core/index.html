@@ -62,9 +62,11 @@
 		<div class="features">			
 			{% for  service in featured_services %}
 				<section >
-					<span class="{{ service.icon_class}} "></span>
-					<h3> {{ service.title}} </h3>
-					<p>{{ service.description}} </p>
+					<a href="{% url 'service_detail' service.slug %}" >
+						<span class="{{ service.icon_class}} "></span>
+						<h3> {{ service.title}} </h3>
+						<p>{{ service.description}} </p>
+					</a>	
 				</section>
 			{% endfor %}	
 		</div>

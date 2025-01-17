@@ -7,7 +7,7 @@
 -->
 <html>
 	<head>
-		<title>Generic - Hyperspace by HTML5 UP</title>
+		<title>Service Detail</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href= "{% static 'css/main.css' %}" />
@@ -21,24 +21,21 @@
 				<nav>
 					<ul>
 						<li><a href="{% url 'index' %}" >Home</a></li>
-						<li><a href="{% url 'service_list' %}" class="active">Services</a></li>
+						<li><a href="{% url 'service_list' %}" >Services</a></li>
+                        <li><a href="{% url 'service_detail' service.slug %}" class="active">{{ service.title}}</a></li>
 					</ul>
 				</nav>
 			</header>
 
 		<!-- Wrapper -->
-			<div id="wrapper">
-				{% for  service in services %}
+			<div id="wrapper">				
 				<div class="features">
-					<section style ="width:80%">
-						<a href="{% url 'service_detail' service.slug %}" >
-							<span class="{{ service.icon_class}} "></span>
-							<h3> {{ service.title}} </h3>
-							<p>{{ service.description|truncatechars:100}} </p>
-						</a>
+					<section style ="width:80%">						
+						<span class="{{ service.icon_class}} "></span>
+						<h3> {{ service.title}} </h3>
+						<p>{{ service.description}} </p>
 					</section>
-				</div>
-				{% endfor %}				
+				</div>								
 			</div>
 
 		<!-- Footer -->
