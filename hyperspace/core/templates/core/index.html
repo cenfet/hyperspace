@@ -16,42 +16,24 @@
 
 <!-- One -->
 <section id="one" class="wrapper style2 spotlights">
-	<section>
-		<a href="#" class="image"><img src="{% static 'images/pic01.jpg' %}" alt="" data-position="center center" /></a>
-		<div class="content">
-			<div class="inner">
-				<h2>Sed ipsum dolor</h2>
-				<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-				<ul class="actions">
-					<li><a href="generic.html" class="button">Learn more</a></li>
-				</ul>
+	{% for blog in last_blogs %}
+		<section>
+			<a href="{% url 'blog_detail' blog.slug %}"  class="image">				
+				<img src="{{ blog.image}}" alt="" data-position="center center" />
+			</a>
+			<div class="content">
+				<div class="inner">					
+					<a href="{% url 'blog_detail' blog.slug %}" >
+						<h2>{{ blog.title}}</h2>
+						<p>{{ blog.content|truncatechars:100}}</p>
+					</a>
+					<ul class="actions">
+						<li><a href="generic.html" class="button">Learn more</a></li>
+					</ul>
+				</div>
 			</div>
-		</div>
-	</section>
-	<section>
-		<a href="#" class="image"><img src="{% static 'images/pic02.jpg' %}" alt="" data-position="top center" /></a>
-		<div class="content">
-			<div class="inner">
-				<h2>Feugiat consequat</h2>
-				<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-				<ul class="actions">
-					<li><a href="generic.html" class="button">Learn more</a></li>
-				</ul>
-			</div>
-		</div>
-	</section>
-	<section>
-		<a href="#" class="image"><img src="{% static 'images/pic03.jpg' %}" alt="" data-position="25% 25%" /></a>
-		<div class="content">
-			<div class="inner">
-				<h2>Ultricies aliquam</h2>
-				<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-				<ul class="actions">
-					<li><a href="generic.html" class="button">Learn more</a></li>
-				</ul>
-			</div>
-		</div>
-	</section>
+		</section>
+	{% endfor%}
 </section>
 
 <!-- Two -->

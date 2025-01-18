@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from services.models import Service
+from blog.models import Blog
 
 def index(request):
     static_content ="""<div class="inner">
@@ -12,8 +13,10 @@ def index(request):
 	</div> 
     """
     featured_services = Service.objects.filter(is_featured = True)
+    last_blogs = Blog.objects.all()[:2]
     context = {
         "stc_cont":static_content,
-        "featured_services":featured_services
+        "featured_services":featured_services,
+        "last_blogs":last_blogs
     }    
     return render(request,'core/index.html',context)
